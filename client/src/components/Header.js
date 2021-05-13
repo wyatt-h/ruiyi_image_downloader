@@ -9,7 +9,7 @@ import {
   NavLink,
 } from "reactstrap";
 
-const Header = (props) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
