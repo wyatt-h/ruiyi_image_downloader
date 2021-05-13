@@ -1,12 +1,8 @@
 import React from "react";
-import { Button } from "reactstrap";
+import { connect } from "react-redux";
 
-const ImageGrid = () => {
-  return (
-    <div>
-      <Button>Get Images</Button>
-    </div>
-  );
+const ImageGrid = ({ }) => {
+  return <div className="img-grid"></div>;
 };
 
-export default ImageGrid;
+export default connect(null, null)(ImageGrid);

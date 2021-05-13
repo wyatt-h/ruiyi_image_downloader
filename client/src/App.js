@@ -5,11 +5,13 @@ import { Provider } from "react-redux";
 import "./style/style.css";
 
 import Header from "./components/Header";
+import ImageDashboard from "./components/ImageDashboard";
 
 const App = () => {
   return (
     <Provider store={store}>
       <Header />
+      <ImageDashboard />
     </Provider>
   );
 };

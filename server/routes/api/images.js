@@ -11,7 +11,16 @@ const Image = require("../../models/Image");
 router.get("/", (req, res) => {
   scraper
     .get_images()
-    .then((images) => res.json(images));
+    .then((images) => res.json(images))
+    .catch((err) =>
+      res
+        .status(500)
+        .send(
+          new Error(
+            "There is something wrong with the server"
+          )
+        )
+    );
 });
 
 module.exports = router;
