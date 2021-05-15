@@ -2,6 +2,9 @@ import {
   IMG_LOADING,
   IMG_LOADED,
   GET_IMG_FAILED,
+  REFRESHING,
+  REFRESH_SUCCESS,
+  REFRESH_FAILED,
 } from "../actions/types";
 
 const initialState = {
@@ -15,19 +18,26 @@ export default function (
   action
 ) {
   switch (action.type) {
+    case REFRESHING:
     case IMG_LOADING:
       return {
         ...state,
         img_loading: true,
         img_loaded: false,
       };
-    case IMG_LOADED:
+    case REFRESH_SUCCESS:
       return {
         ...state,
+        img_loading: false,
+        img_loaded: true,
+      };
+    case IMG_LOADED:
+      return {
         images: action.payload,
         img_loading: false,
         img_loaded: true,
       };
+    case REFRESH_FAILED:
     case GET_IMG_FAILED:
       return {
         ...state,
