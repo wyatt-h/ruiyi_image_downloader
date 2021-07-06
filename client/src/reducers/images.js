@@ -11,6 +11,7 @@ const initialState = {
   images: [],
   img_loading: false,
   img_loaded: false,
+  page_has_more: true,
 };
 
 export default function (
@@ -28,11 +29,13 @@ export default function (
     case REFRESH_SUCCESS:
       return {
         ...state,
+        images: [],
         img_loading: false,
         img_loaded: true,
       };
     case IMG_LOADED:
       return {
+        ...state,
         images: action.payload,
         img_loading: false,
         img_loaded: true,

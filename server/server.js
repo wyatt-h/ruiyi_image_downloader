@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -12,18 +11,6 @@ app.use(bodyParser.json());
 
 // CORS middleware
 app.use(cors());
-
-// db config
-const db = require("./config/keys").mongoURI;
-
-// connect to mongo
-mongoose
-  .connect(db, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));
 
 // use routes
 app.use("/api/images", images);

@@ -17,6 +17,7 @@
     "@babel/preset-env": "^7.14.1",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
     "css-loader": "^5.2.4",
     "style-loader": "^2.0.0",
     "webpack": "^5.37.0",
@@ -24,8 +25,14 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.14.6",
     "bootstrap": "^5.0.0",
+    "cors-anywhere": "^0.4.4",
+    "file-saver": "^2.0.5",
     "jszip": "^3.6.0",
+    "p-limit": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",

@@ -52,7 +52,7 @@ export const refresh_images =
       })
       .then((data) => {
         dispatch({ type: REFRESH_SUCCESS });
-        dispatch(get_images());
+        dispatch(get_images(1));
       })
       .catch((errRes) => {
         dispatch({ type: REFRESH_FAILED });

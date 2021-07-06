@@ -6,7 +6,7 @@ function get_images() {
     try {
       const url =
         "http://qdjz.lexuewang.cn:8002/";
-      const username = "241790";
+      const username = "241512";
       const password = "123456";
       const browser = await puppeteer.launch({
         headless: false,
@@ -50,6 +50,10 @@ function get_images() {
       await page.waitForSelector("li.list-item");
       btn_avail = false;
       flag = true;
+      //test code
+      x = 0;
+      // while (x < 60) {
+      //   x++;
       while (!btn_avail) {
         await page.waitForFunction(
           () =>
@@ -80,9 +84,9 @@ function get_images() {
               .first()
               .next()
               .text()
-              .split(" ")
-              .slice(0, 2)
-              .join(" ");
+              .split(" ")[0]
+              .split("/")
+              .join("-");
             itag = info
               .last()
               .text()
@@ -90,7 +94,7 @@ function get_images() {
             image = {
               name: iname,
               url: iurl,
-              time: itime,
+              date: itime,
               tag: itag,
             };
             images.push(image);
