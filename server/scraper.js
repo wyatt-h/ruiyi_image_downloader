@@ -6,7 +6,7 @@ function get_images() {
     try {
       const url =
         "http://qdjz.lexuewang.cn:8002/";
-      const username = "241512";
+      const username = "241837";
       const password = "123456";
       const browser = await puppeteer.launch({
         headless: false,

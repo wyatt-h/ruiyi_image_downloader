@@ -10,7 +10,7 @@ const ImageDashboard = ({
   refresh_images,
   images,
 }) => {
-  const limit = pLimit(100);
+  const limit = pLimit(250);
 
   const downloadIMGs = async () => {
     console.log("download clicked");
