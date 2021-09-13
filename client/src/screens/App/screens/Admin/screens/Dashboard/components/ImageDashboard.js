@@ -1,15 +1,12 @@
 import React from "react";
-import ImageGrid from "./ImageGrid";
-import { refresh_images } from "../actions/images";
+import ImageGrid from "../../../../../components/ImageGrid";
+import { refresh_images } from "../../../../../../../actions/images";
 import { connect } from "react-redux";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import pLimit from "p-limit";
 
-const ImageDashboard = ({
-  refresh_images,
-  images,
-}) => {
+const ImageDashboard = ({ refresh_images, images }) => {
   const limit = pLimit(250);
 
   const downloadIMGs = async () => {
@@ -20,13 +17,9 @@ const ImageDashboard = ({
     images.forEach((image, index) => {
       console.log(limit.pendingCount);
       const imageBlob = limit(() =>
-        fetch(image.url).then((response) =>
-          response.blob()
-        )
+        fetch(image.url).then((response) => response.blob())
       );
-      imgNames[
-        index
-      ] = `${index}_${image.tag}_${image.name}.jpg`;
+      imgNames[index] = `${index}_${image.tag}_${image.name}.jpg`;
       imgFetches.push(imageBlob);
     });
     await Promise.all(imgFetches)
@@ -34,26 +27,16 @@ const ImageDashboard = ({
         console.log("completed");
         console.log(imgFetches);
         console.log(values);
-        await values.forEach(
-          async (imageBlob, index) => {
-            const imageData = await new File(
-              [imageBlob],
-              "filename.jpg"
-            );
-            await zip.file(
-              imgNames[index],
-              imageData
-            );
-          }
-        );
+        await values.forEach(async (imageBlob, index) => {
+          const imageData = await new File([imageBlob], "filename.jpg");
+          await zip.file(imgNames[index], imageData);
+        });
       })
       .then(() => {
         console.log(zip);
-        zip
-          .generateAsync({ type: "blob" })
-          .then(function (blob) {
-            saveAs(blob, "ruiyi_images.zip");
-          });
+        zip.generateAsync({ type: "blob" }).then(function (blob) {
+          saveAs(blob, "ruiyi_images.zip");
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -65,10 +48,7 @@ const ImageDashboard = ({
       >
         Refresh
       </button>
-      <button
-        className="btn btn-warning btn-sm"
-        onClick={downloadIMGs}
-      >
+      <button className="btn btn-warning btn-sm" onClick={downloadIMGs}>
         Download
       </button>
       <ImageGrid />

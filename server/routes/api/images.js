@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const scraper = require("../../scraper");
-const pool = require("../../pool");
+const db = require("../../db");
 const { response } = require("express");
 
 //@route    GET api/images
@@ -12,7 +12,7 @@ router.get(
   // paginatedResults("SELECT * FROM images"),
   (req, res) => {
     // res.json(res.paginatedResults);
-    pool
+    db
       .query("SELECT * FROM images")
       .then((response) => {
         res.json(response.rows);
@@ -28,7 +28,7 @@ router.get(
 //@access   Public
 router.get("/refresh", (req, res) => {
   scraper.get_images().then((images) => {
-    pool
+    db
       .query("DELETE FROM images")
       .then(() => {
         images.forEach((image) => {
@@ -67,7 +67,7 @@ function paginatedResults(query) {
 
     const results = {};
 
-    pool
+    db
       .query(query)
       .then((response) => {
         if (endIndex < response.rows.length)
