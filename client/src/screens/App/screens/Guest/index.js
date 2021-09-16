@@ -1,10 +1,12 @@
 import React from "react";
 import Home from "./screens/Home";
+import Register from "./screens/Register";
 
 const Guest = () => {
   return (
     <div>
-      <Home />
+      {/* <Home /> */}
+      <Register />
     </div>
   );
 };
