@@ -132,6 +132,8 @@ temp/
 # https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
 
 .yarn/*
+yarn.lock
+*.lock
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
