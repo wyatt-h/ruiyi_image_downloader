@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -9,7 +9,7 @@ const app = express();
 // body parser middleware
 app.use(bodyParser.json());
 
-// CORS middleware
+// CORS middleware server.js
 app.use(cors());
 
 // use routes
@@ -17,6 +17,6 @@ app.use("/api/images", images);
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () =>
-  console.log(`Server started on port ${port}...`)
-);
+module.exports = app;
+
+app.listen(port, () => console.log(`Server started on port ${port}...`));
