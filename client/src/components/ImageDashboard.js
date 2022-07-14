@@ -1,6 +1,6 @@
 import React from "react";
-import ImageGrid from "../../../../../components/ImageGrid";
-import { refresh_images } from "../../../../../../../actions/images";
+import ImageGrid from "./ImageGrid";
+import { refresh_images } from "../actions/images";
 import { connect } from "react-redux";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";

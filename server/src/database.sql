@@ -1,0 +1,11 @@
+
+  CREATE DATABASE ruiyi_images;
+
+  DROP TABLE IF EXISTS images;
+  CREATE TABLE IF NOT EXISTS images (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR DEFAULT '',
+    url VARCHAR(255),
+    tag VARCHAR(100),
+    date DATE NOT NULL DEFAULT CURRENT_DATE
+  );

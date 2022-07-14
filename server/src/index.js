@@ -1,8 +1,10 @@
 import express from "express";
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import bodyParser from "body-parser";
+import cors from "cors";
+import { pool } from "./models/pool";
 
-const images = require("./routes/api/images");
+import images from "./routes/images";
+import indexRouter from "./routes";
 
 const app = express();
 
@@ -15,8 +17,18 @@ app.use(cors());
 // use routes
 app.use("/api/images", images);
 
-const port = process.env.PORT || 5000;
+app.use("/sampleImage", indexRouter);
 
-module.exports = app;
+const port = process.env.PORT || 3000;
+
+pool.query("SELECT NOW()", (err, res) => {
+  if (res) {
+    console.log("Postgresql successfully connected...");
+  } else {
+    console.error("Database connection failed: ", err);
+  }
+});
 
 app.listen(port, () => console.log(`Server started on port ${port}...`));
+
+module.exports = app;

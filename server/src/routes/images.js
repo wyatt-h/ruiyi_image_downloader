@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const scraper = require("../../scraper");
-const db = require("../../db");
+const scraper = require("../scraper");
+const db = require("../db");
 const { response } = require("express");
-const testEnvironmentVariable = require("../../settings");
+const testEnvironmentVariable = require("../settings");
 
 //@route    GET api/images
 //@desc     get all images
@@ -83,4 +83,4 @@ function paginatedResults(query) {
   };
 }
 
-module.exports = router;
+export default router;
